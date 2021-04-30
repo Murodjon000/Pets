@@ -1,6 +1,6 @@
 # Pets Catalogue
 
-- This is React Bookstore app which was built fully using JavaScript and JSX.In this app, you can add and search books from bookstore very easily.
+- This is React Pets Catalogue app which was built fully using JavaScript and JSX.In this app, you can see and search pets from Catalogue very easily.
 
 ## Live Demo
 
