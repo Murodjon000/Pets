@@ -1,6 +1,25 @@
 # Pets Catalogue
 
-- This is React Pets Catalogue app which was built fully using JavaScript and JSX.In this app, you can see and search pets from Catalogue very easily.
+### Search page
+
+![Photo](./readme.png)
+
+### Details page
+
+![Photo](./readme-1.png)
+
+# About the project
+
+This project was built as a React & Redux Capstone project at Microverse. It is based on the idea of a "Catalogue of Recipes" which is a single-page application with React and Redux.
+It shows a browsable list of pets that users can filter and access to the details of each pet. Every page, the main page, and pages for each item have a unique route within the Single Page Application, SPA.
+
+I deployed this app to Netlify, so it’s accessible online. The data is retrieved from the PetFinder API. With this API, this app fetches the list data of pets based on the user’s selections. And the retrieved data is stored in the Redux store.
+Also with this app, you can see pets and through their details, if you want you can adopt one of them.
+
+This web app has 2 types of pages:
+
+- On the first page you can filter the pet's data with given parameters. You can filter pets with their species, size and gender.
+- Second page is the details page which is responsible for the details of pets that you want to see.
 
 ## Live Demo
 
@@ -14,6 +33,7 @@
 - SCSS
 - Node
 - Redux
+- API
 
 ## Getting Started
 
