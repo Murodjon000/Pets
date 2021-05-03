@@ -1,0 +1,16 @@
+.footer__wrapper {
+  padding: 16px;
+  background-color: white;
+  border-bottom: $primary-200;
+  margin-top: 70px;
+
+  & > a {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    color: $primary-200;
+    font-size: 29px;
+    font-weight: 600;
+    font-family: $Alegreya;
+  }
+}
