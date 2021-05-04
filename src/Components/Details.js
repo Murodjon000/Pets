@@ -33,7 +33,7 @@ class Details extends Component {
 
   render() {
     if (this.state.loading) {
-      return <h1 className="loading__wrapper">Loading....</h1>;
+      return <h1 className="loading__wrapper"  data-testid="details-loading">Loading....</h1>;
     }
     const { name, breed, animal, location, description, media } = this.state;
     let hero = "http://placecorgi.com/300/300";
