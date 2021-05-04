@@ -1,6 +1,6 @@
-import { FILTER_GENDER, FILTER_PETS, FILTER_SIZE } from "../actions";
+import { FILTER_GENDER, FILTER_PETS, FILTER_SIZE } from '../actions';
 
-const filterPet = (state = "All", action) => {
+const filterPet = (state = 'All', action) => {
   if (action.type === FILTER_PETS) {
     return { state, breed: action.payload.breed };
   }

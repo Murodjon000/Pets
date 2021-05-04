@@ -1,21 +1,21 @@
-import { ADD_PETS } from "../../actions";
-import pet from "../../reducers/pet";
+import { ADD_PETS } from '../../actions';
+import pet from '../../reducers/pet';
 
 const pets = [
   {
-    gender: "Male",
+    gender: 'Male',
     id: 1,
-    name: "Charlie",
-    type: "Dog",
+    name: 'Charlie',
+    type: 'Dog',
   },
 ];
 
-test("should set empty array by default", () => {
-  const state = pet(undefined, { type: "@@INIT" });
+test('should set empty array by default', () => {
+  const state = pet(undefined, { type: '@@INIT' });
   expect(state).toEqual([]);
 });
 
-test("should add pets to state", () => {
+test('should add pets to state', () => {
   const action = {
     type: ADD_PETS,
     payload: {

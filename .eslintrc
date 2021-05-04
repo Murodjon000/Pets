@@ -4,13 +4,17 @@
     "es6": true,
     "jest": true
   },
-  "parser": "babel-eslint",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
     "ecmaVersion": 2018,
     "sourceType": "module"
+  },
+  "settings": {
+    "react": {
+      "version": "^17.0.2"
+    }
   },
   "extends": ["plugin:react/recommended"],
   "plugins": ["react"],
@@ -19,11 +23,6 @@
     "react/react-in-jsx-scope": "off",
     "import/no-unresolved": "off",
     "no-shadow": "off"
-  },
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
   },
   "ignorePatterns": ["dist/", "build/"]
 }

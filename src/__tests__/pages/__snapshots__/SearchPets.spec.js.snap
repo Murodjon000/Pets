@@ -22,6 +22,7 @@ exports[`should correctly render SearchPets page 1`] = `
           Animal
           <select
             onChange={[Function]}
+            value="All"
           >
             <option>
               All
@@ -74,6 +75,7 @@ exports[`should correctly render SearchPets page 1`] = `
           Size
           <select
             onChange={[Function]}
+            value="All"
           >
             <option>
               All
@@ -101,6 +103,7 @@ exports[`should correctly render SearchPets page 1`] = `
           Gender
           <select
             onChange={[Function]}
+            value="All"
           >
             <option>
               All
@@ -118,7 +121,9 @@ exports[`should correctly render SearchPets page 1`] = `
           </select>
         </label>
       </div>
-      <button>
+      <button
+        type="button"
+      >
         Find Pet
       </button>
     </form>

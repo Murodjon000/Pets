@@ -1,4 +1,4 @@
-import { ADD_PETS } from "../actions";
+import { ADD_PETS } from '../actions';
 
 const pets = (pets = [], action) => {
   if (action.type === ADD_PETS) {

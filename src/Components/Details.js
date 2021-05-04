@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import pet from "@frontendmasters/pet";
-import { navigate } from "@reach/router";
-import ErrorBoundary from "./ErrorBoundary";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import pet from '@frontendmasters/pet';
+import { navigate } from '@reach/router';
+import ErrorBoundary from './ErrorBoundary';
 
 class Details extends Component {
   constructor(props) {
@@ -16,31 +16,44 @@ class Details extends Component {
   componentDidMount() {
     pet.animal(this.props.id).then(({ animal }) => {
       this.setState({
-        url: animal.url || "/",
-        name: animal.name || "Name was not Given.",
-        animal: animal.type || "Type was not given",
+        url: animal.url || '/',
+        name: animal.name || 'Name was not Given.',
+        animal: animal.type || 'Type was not given',
         location: `${animal.contact.address.city},${animal.contact.address.state}`,
-        breed: animal.breeds.primary || "Breed was not given",
+        breed: animal.breeds.primary || 'Breed was not given',
         media: animal.photos || [],
-        description: animal.description || "Info was not Given.",
+        description: animal.description || 'Info was not Given.',
         loading: false,
       });
     });
   }
 
-  adopt = () => navigate(this.state.url);
-  home = () => navigate("/");
-
   render() {
     if (this.state.loading) {
-      return <h1 className="loading__wrapper"  data-testid="details-loading">Loading....</h1>;
+      return (
+        <h1 className="loading__wrapper" data-testid="details-loading">
+          Loading....
+        </h1>
+      );
     }
-    const { name, breed, animal, location, description, media } = this.state;
-    let hero = "http://placecorgi.com/300/300";
+
+    const {
+      name,
+      breed,
+      animal,
+      location,
+      description,
+      media,
+      url,
+    } = this.state;
+    let hero = 'http://placecorgi.com/300/300';
 
     if (media.length != 0) {
       hero = media[0].large;
     }
+
+    const home = () => navigate('/');
+    const adopt = () => navigate(url);
 
     return (
       <div className="pets__details-wrapper">
@@ -55,8 +68,8 @@ class Details extends Component {
           </h4>
           <h2>Meet {name}🎉</h2>
           <p>👀{description}</p>
-          <button onClick={this.adopt}>Adopt me</button>
-          <button onClick={this.home}>Back to home</button>
+          <button onClick={adopt}>Adopt me</button>
+          <button onClick={home}>Back to home</button>
         </div>
       </div>
     );

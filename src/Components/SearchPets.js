@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from "prop-types";
-import pet, { ANIMALS } from "@frontendmasters/pet";
-import PetsList from "./PetsList";
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import pet, { ANIMALS } from '@frontendmasters/pet';
+import PetsList from './PetsList';
 
 const SearchPets = ({
   pets = [],
@@ -18,10 +18,10 @@ const SearchPets = ({
   const [petGender, petGenderSet] = useState(gender);
   const [updatePets, setUpdatePets] = useState(pets || []);
 
-  const sizes = ["Small", "Medium", "Large"];
-  const genders = ["Male", "Female"];
+  const sizes = ['Small', 'Medium', 'Large'];
+  const genders = ['Male', 'Female'];
   const capitalize = ([first, ...rest]) =>
-    first.toUpperCase() + rest.join("").toLowerCase();
+    first.toUpperCase() + rest.join('').toLowerCase(); // eslint-disable-line
 
   async function petsRequest() {
     const { animals } = await pet.animals({
@@ -37,25 +37,25 @@ const SearchPets = ({
   }
 
   const onFilterChange = (e) => {
-    const value = e.target.value;
+    const { value } = e.target;
     petFilterSet(value);
   };
 
   const onSizeChange = (e) => {
-    const value = e.target.value;
+    const { value } = e.target;
     petSizeSet(value);
   };
 
   const onGenderChange = (e) => {
-    const value = e.target.value;
+    const { value } = e.target;
     petGenderSet(value);
   };
 
   useEffect(async () => {
     const { animals } = await pet.animals({
-      type: "Horse",
-      gender: "Male",
-      size: "Small",
+      type: 'Horse',
+      gender: 'Male',
+      size: 'Small',
     });
     fetchPets(animals);
     setUpdatePets(animals);
@@ -107,7 +107,7 @@ const SearchPets = ({
               </select>
             </label>
           </div>
-          <button>Find Pet</button>
+          <button type="button">Find Pet</button>
         </form>
       </div>
 
@@ -117,8 +117,7 @@ const SearchPets = ({
 };
 
 SearchPets.propTypes = {
-  pets: PropTypes.array,
-  animals: PropTypes.string,
+  pets: PropTypes.array, // eslint-disable-line
   fetchPets: PropTypes.func,
   filter: PropTypes.string,
   filterPets: PropTypes.func,
@@ -126,6 +125,17 @@ SearchPets.propTypes = {
   filterGender: PropTypes.func,
   size: PropTypes.string,
   gender: PropTypes.string,
+};
+
+SearchPets.defaultProps = {
+  pets: [],
+  fetchPets: null,
+  filter: 'All',
+  filterPets: null,
+  filterSize: null,
+  filterGender: null,
+  size: 'All',
+  gender: 'All',
 };
 
 export default SearchPets;
