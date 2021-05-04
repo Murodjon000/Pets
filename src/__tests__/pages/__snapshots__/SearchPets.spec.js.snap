@@ -25,7 +25,7 @@ exports[`should correctly render SearchPets page 1`] = `
             value="All"
           >
             <option>
-              All
+              Select
             </option>
             <option
               value="barnyard"
@@ -78,7 +78,7 @@ exports[`should correctly render SearchPets page 1`] = `
             value="All"
           >
             <option>
-              All
+              Select
             </option>
             <option
               value="Small"
@@ -106,7 +106,7 @@ exports[`should correctly render SearchPets page 1`] = `
             value="All"
           >
             <option>
-              All
+              Select
             </option>
             <option
               value="Male"

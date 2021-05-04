@@ -10,11 +10,7 @@ import SearchPets from '../Components/SearchPets';
 const capitalize = ([first, ...rest]) => first.toUpperCase() + rest.join('').toLowerCase();
 
 const getFilteredPets = (pets, filter) => {
-  if (
-    filter.breed === 'All'
-    && filter.size === 'All'
-    && filter.gender === 'All'
-  ) {
+  if (filter.breed === 'All') {
     return pets;
   }
 

@@ -13,9 +13,9 @@ const SearchPets = ({
   gender,
   filterGender,
 }) => {
-  const [petSize, petSizeSet] = useState(size);
-  const [petFilter, petFilterSet] = useState(filter);
-  const [petGender, petGenderSet] = useState(gender);
+  const [petSize, petSizeSet] = useState(size || 'All');
+  const [petFilter, petFilterSet] = useState(filter || 'All');
+  const [petGender, petGenderSet] = useState(gender || 'All');
   const [updatePets, setUpdatePets] = useState(pets || []);
 
   const sizes = ['Small', 'Medium', 'Large'];
@@ -75,7 +75,7 @@ const SearchPets = ({
             <label htmlFor="id-1">
               Animal
               <select value={petFilter} onChange={onFilterChange}>
-                <option>All</option>
+                <option>Select</option>
                 {ANIMALS.map(option => (
                   <option value={option} key={option}>
                     {capitalize(option)}
@@ -86,7 +86,7 @@ const SearchPets = ({
             <label htmlFor="id-2">
               Size
               <select value={petSize} onChange={onSizeChange}>
-                <option>All</option>
+                <option>Select</option>
                 {sizes.map(option => (
                   <option value={option} key={option}>
                     {option}
@@ -98,7 +98,7 @@ const SearchPets = ({
             <label htmlFor="id-3">
               Gender
               <select value={petGender} onChange={onGenderChange}>
-                <option>All</option>
+                <option>Select</option>
                 {genders.map(option => (
                   <option value={option} key={option}>
                     {option}

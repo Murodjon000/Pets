@@ -2,6 +2,7 @@ export const ADD_PETS = 'ADD_PETS';
 export const FILTER_PETS = 'FILTER_PETS';
 export const FILTER_SIZE = 'FILTER_SIZE';
 export const FILTER_GENDER = 'FILTER_GENDER';
+/* eslint-disable */
 
 export const addPets = pets => ({
   type: ADD_PETS,
@@ -10,7 +11,12 @@ export const addPets = pets => ({
   },
 });
 
-export const fetchPets = animals => addPets(animals);
+
+export const fetchPets = (animals) => {
+  return (dispatch) => {
+    return dispatch(addPets(animals || []));
+  };
+};
 
 export const filterPets = breed => ({
   type: FILTER_PETS,
