@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should correctly render Details page 1`] = `
+<h1
+  className="loading__wrapper"
+  data-testid="details-loading"
+>
+  Loading....
+</h1>
+`;
