@@ -12,14 +12,17 @@
     align-items: center;
     flex-direction: column;
     padding: 10px;
+
     &-box {
       display: flex;
       justify-content: center;
       align-items: center;
       flex-direction: column;
+
       & > label {
         width: 100%;
         margin-bottom: 15px;
+
         & > select {
           float: right;
         }
@@ -35,11 +38,13 @@
   border-radius: 10px;
   max-width: 1200px;
   font-family: $Alegreya;
+
   &-form {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
+
     &-box {
       & > label {
         background-color: white;
@@ -49,6 +54,7 @@
         margin-left: 15px;
         font-size: 20px;
         font-family: $Alegreya;
+
         & > select {
           margin-left: 10px;
           font-size: 20px;
@@ -65,6 +71,7 @@
       font-size: 25px;
       transition: all 0.3s linear;
       font-family: $Alegreya;
+
       &:hover {
         background-color: $primary-200;
         color: white;

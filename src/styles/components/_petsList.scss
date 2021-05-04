@@ -9,11 +9,13 @@
     flex-direction: column;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     border-radius: 6px;
+
     & > img {
       height: 300px;
       display: block;
       border-radius: 6px 6px 0 0;
     }
+
     & > span {
       font-size: 1.8rem;
       text-align: center;

@@ -5,7 +5,6 @@ export const FILTER_GENDER = "FILTER_GENDER";
 
 export const fetchPets = (animals) => {
   return (dispatch) => {
-    console.log(animals, "dada");
     return dispatch(addPets(animals));
   };
 };
