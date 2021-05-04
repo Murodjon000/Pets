@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const PetsList = ({ pets }) => {
   return (
-    <div className="pets__wrapper">
+    <div className="pets__wrapper" data-testid="pets-list-id">
       {pets.length === 0 ? (
         <h1 className="loading__wrapper">Not pets Found</h1>
       ) : (
