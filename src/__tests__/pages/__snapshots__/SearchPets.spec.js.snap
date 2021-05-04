@@ -121,9 +121,7 @@ exports[`should correctly render SearchPets page 1`] = `
           </select>
         </label>
       </div>
-      <button
-        type="button"
-      >
+      <button>
         Find Pet
       </button>
     </form>

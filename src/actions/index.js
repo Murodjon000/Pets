@@ -3,6 +3,10 @@ export const FILTER_PETS = 'FILTER_PETS';
 export const FILTER_SIZE = 'FILTER_SIZE';
 export const FILTER_GENDER = 'FILTER_GENDER';
 
+export const fetchPets = (animals) => {
+  return addPets(animals);
+};
+
 export const filterPets = (breed) => ({
   type: FILTER_PETS,
   payload: {
@@ -30,10 +34,3 @@ export const addPets = (pets) => ({
     pets,
   },
 });
-
-/* eslint-disable */
-export const fetchPets = (animals) => {
-  return (dispatch) => {
-    return dispatch(addPets(animals));
-  };
-};

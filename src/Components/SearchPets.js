@@ -107,7 +107,7 @@ const SearchPets = ({
               </select>
             </label>
           </div>
-          <button type="button">Find Pet</button>
+          <button>Find Pet</button>
         </form>
       </div>
 
