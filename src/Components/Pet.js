@@ -11,7 +11,7 @@ const Pet = ({ id, name, media }) => {
 
   return (
     <Link to={`/details/${id}`}>
-      <div className="pets__card">
+      <div className="pets__card" data-tesid="pets-comp">
         <div className="pets__card-box">
           <img src={hero} alt="" />
           <span>{name}</span>
