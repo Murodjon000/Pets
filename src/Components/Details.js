@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import pet from '@frontendmasters/pet';
 import { navigate } from '@reach/router';
-// import ErrorBoundary from './ErrorBoundary';
 
 const Details = ({ id }) => {
   const [loading, setLoading] = useState(true);
@@ -76,13 +75,5 @@ Details.propTypes = {
 Details.propTypes = {
   id: PropTypes.any, // eslint-disable-line
 };
-
-// export default function DetailsWithErrorBoundary(props) {
-//   return (
-//     <ErrorBoundary>
-//       <Details {...props} />
-//     </ErrorBoundary>
-//   );
-// }
 
 export default Details;

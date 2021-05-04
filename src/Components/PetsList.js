@@ -1,4 +1,3 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import Pet from './Pet';
 
@@ -7,7 +6,7 @@ const PetsList = ({ pets }) => (
     {pets.length === 0 ? (
       <h1 className="loading__wrapper">Not pets Found</h1>
     ) : (
-      pets.map(pet => (
+      pets.map((pet) => (
         <Pet id={pet.id} name={pet.name} key={pet.id} media={pet.photos} />
       ))
     )}

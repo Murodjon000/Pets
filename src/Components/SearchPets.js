@@ -36,17 +36,17 @@ const SearchPets = ({
     filterGender(petGender);
   }
 
-  const onFilterChange = e => {
+  const onFilterChange = (e) => {
     const { value } = e.target;
     petFilterSet(value);
   };
 
-  const onSizeChange = e => {
+  const onSizeChange = (e) => {
     const { value } = e.target;
     petSizeSet(value);
   };
 
-  const onGenderChange = e => {
+  const onGenderChange = (e) => {
     const { value } = e.target;
     petGenderSet(value);
   };
@@ -66,7 +66,7 @@ const SearchPets = ({
         <form
           data-testid="search-pets-form"
           className="search__form__wrapper-form"
-          onSubmit={e => {
+          onSubmit={(e) => {
             e.preventDefault();
             petsRequest();
           }}
@@ -76,7 +76,7 @@ const SearchPets = ({
               Animal
               <select value={petFilter} onChange={onFilterChange}>
                 <option>Select</option>
-                {ANIMALS.map(option => (
+                {ANIMALS.map((option) => (
                   <option value={option} key={option}>
                     {capitalize(option)}
                   </option>
@@ -87,7 +87,7 @@ const SearchPets = ({
               Size
               <select value={petSize} onChange={onSizeChange}>
                 <option>Select</option>
-                {sizes.map(option => (
+                {sizes.map((option) => (
                   <option value={option} key={option}>
                     {option}
                   </option>
@@ -99,7 +99,7 @@ const SearchPets = ({
               Gender
               <select value={petGender} onChange={onGenderChange}>
                 <option>Select</option>
-                {genders.map(option => (
+                {genders.map((option) => (
                   <option value={option} key={option}>
                     {option}
                   </option>
