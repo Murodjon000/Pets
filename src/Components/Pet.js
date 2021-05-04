@@ -1,11 +1,11 @@
-import React, { useEffect } from "react";
-import PropTypes from "prop-types";
-import { Link } from "@reach/router";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from '@reach/router';
 
 const Pet = ({ id, name, media }) => {
-  let hero = "http://placecorgi.com/300/300";
+  let hero = 'http://placecorgi.com/300/300';
 
-  if (media.length != 0) {
+  if (media.length !== 0) {
     hero = media[0].medium;
   }
 
@@ -23,8 +23,14 @@ const Pet = ({ id, name, media }) => {
 
 Pet.propTypes = {
   name: PropTypes.string,
-  media: PropTypes.array,
+  media: PropTypes.array, // eslint-disable-line
   id: PropTypes.number,
+};
+
+Pet.defaultProps = {
+  name: '',
+  media: [],
+  id: '',
 };
 
 export default Pet;

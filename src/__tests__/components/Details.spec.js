@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import Details from '../../Components/Details'
+import Details from '../../Components/Details';
 
 test('should render the Details component', () => {
   render(<Details />);

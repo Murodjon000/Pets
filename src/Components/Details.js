@@ -1,89 +1,88 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import pet from '@frontendmasters/pet';
 import { navigate } from '@reach/router';
-import ErrorBoundary from './ErrorBoundary';
+// import ErrorBoundary from './ErrorBoundary';
 
-class Details extends Component {
-  constructor(props) {
-    super(props);
+const Details = ({ id }) => {
+  const [loading, setLoading] = useState(true);
+  const [url, setUrl] = useState('');
+  const [name, setName] = useState('');
+  const [animal, setAnimal] = useState('');
+  const [location, setLocation] = useState('');
+  const [breed, setBreed] = useState('');
+  const [media, setMedia] = useState('');
+  const [description, setDescription] = useState('');
 
-    this.state = {
-      loading: true,
-    };
-  }
-
-  componentDidMount() {
-    pet.animal(this.props.id).then(({ animal }) => {
-      this.setState({
-        url: animal.url || '/',
-        name: animal.name || 'Name was not Given.',
-        animal: animal.type || 'Type was not given',
-        location: `${animal.contact.address.city},${animal.contact.address.state}`,
-        breed: animal.breeds.primary || 'Breed was not given',
-        media: animal.photos || [],
-        description: animal.description || 'Info was not Given.',
-        loading: false,
-      });
-    });
-  }
-
-  render() {
-    if (this.state.loading) {
-      return (
-        <h1 className="loading__wrapper" data-testid="details-loading">
-          Loading....
-        </h1>
+  useEffect(async () => {
+    const pets = await pet.animal(id).then(({ animal }) => {
+      setUrl(animal.url);
+      setName(animal.name);
+      setAnimal(animal.type);
+      setLocation(
+        `${animal.contact.address.city},${animal.contact.address.state}`,
       );
-    }
+      setBreed(animal.breeds.primary);
+      setMedia(animal.photos);
+      setDescription(animal.description);
+      setLoading(false);
+    });
+    return pets;
+  }, [id]);
 
-    const {
-      name,
-      breed,
-      animal,
-      location,
-      description,
-      media,
-      url,
-    } = this.state;
-    let hero = 'http://placecorgi.com/300/300';
-
-    if (media.length != 0) {
-      hero = media[0].large;
-    }
-
-    const home = () => navigate('/');
-    const adopt = () => navigate(url);
-
+  if (loading) {
     return (
-      <div className="pets__details-wrapper">
-        <div className="pets__details-wrapper-image">
-          <img src={hero} alt="" />
-        </div>
-        <div className="pets__details-wrapper-box">
-          <h1>{name}</h1>
-          <h3>🏡{location}</h3>
-          <h4>
-            {animal}⭐{breed}
-          </h4>
-          <h2>Meet {name}🎉</h2>
-          <p>👀{description}</p>
-          <button onClick={adopt}>Adopt me</button>
-          <button onClick={home}>Back to home</button>
-        </div>
-      </div>
+      <h1 className="loading__wrapper" data-testid="details-loading">
+        Loading....
+      </h1>
     );
   }
-}
 
-Details.propTypes = {
-  id: PropTypes.any,
+  let hero = 'http://placecorgi.com/300/300';
+
+  if (media.length !== 0) {
+    hero = media[0].large;
+  }
+
+  const home = () => navigate('/');
+  const adopt = () => navigate(url);
+
+  return (
+    <div className="pets__details-wrapper">
+      <div className="pets__details-wrapper-image">
+        <img src={hero} alt="" />
+      </div>
+      <div className="pets__details-wrapper-box">
+        <h1>{name}</h1>
+        <h3>{`🏡 ${location}`}</h3>
+        <h4>{`${animal}⭐${breed}`}</h4>
+        <h2>{`Meet ${name}🎉`}</h2>
+        <p>{`👀 ${description}`}</p>
+        <button type="button" onClick={adopt}>
+          Adopt me
+        </button>
+        <button type="button" onClick={home}>
+          Back to home
+        </button>
+      </div>
+    </div>
+  );
 };
 
-export default function DetailsWithErrorBoundary(props) {
-  return (
-    <ErrorBoundary>
-      <Details {...props} />
-    </ErrorBoundary>
-  );
-}
+Details.propTypes = {
+  id: PropTypes.number,
+};
+
+Details.propTypes = {
+  id: PropTypes.any, // eslint-disable-line
+};
+
+// export default function DetailsWithErrorBoundary(props) {
+//   return (
+//     <ErrorBoundary>
+//       <Details {...props} />
+//     </ErrorBoundary>
+//   );
+// }
+
+export default Details;

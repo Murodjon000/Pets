@@ -1,5 +1,5 @@
-import React from "react";
-import { Link } from "@reach/router";
+import React from 'react';
+import { Link } from '@reach/router';
 
 const Navbar = () => (
   <header className="header__wrapper">
