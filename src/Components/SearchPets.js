@@ -29,7 +29,6 @@ const SearchPets = ({
       gender: petGender,
       size: petSize,
     });
-    console.log(animals);
     fetchPets(animals);
     setUpdatePets(animals);
     filterPets(petFilter);
@@ -52,10 +51,20 @@ const SearchPets = ({
     petGenderSet(value);
   };
 
+  useEffect(async () => {
+    const { animals } = await pet.animals({
+      type: "Horse",
+      gender: "Male",
+      size: "Small",
+    });
+    fetchPets(animals);
+    setUpdatePets(animals);
+  }, []);
   return (
-    <div className="main__wrapper">
+    <div className="main__wrapper" data-testid="search-pets-id">
       <div className="search__form__wrapper">
         <form
+          data-testid="search-pets-form"
           className="search__form__wrapper-form"
           onSubmit={(e) => {
             e.preventDefault();
