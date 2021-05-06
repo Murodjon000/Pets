@@ -135,7 +135,7 @@ exports[`should correctly render SearchPets page 1`] = `
     <h1
       className="loading__wrapper"
     >
-      Not pets Found
+      No pets Found
     </h1>
   </div>
 </div>
