@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import pet, { ANIMALS } from '@frontendmasters/pet';
+import { ANIMALS } from '@frontendmasters/pet';
 import PetsList from './PetsList';
+import petFinder from '../helpers/petFinderApi';
 
 const SearchPets = ({
   pets = [],
@@ -13,8 +14,8 @@ const SearchPets = ({
   gender,
   filterGender,
 }) => {
-  const [petSize, petSizeSet] = useState(size || 'All');
-  const [petFilter, petFilterSet] = useState(filter || 'All');
+  const [petSize, petSizeSet] = useState(size);
+  const [petFilter, petFilterSet] = useState(filter);
   const [petGender, petGenderSet] = useState(gender || 'All');
   const [updatePets, setUpdatePets] = useState(pets || []);
 
@@ -24,11 +25,15 @@ const SearchPets = ({
     first.toUpperCase() + rest.join('').toLowerCase(); // eslint-disable-line
 
   async function petsRequest() {
-    const { animals } = await pet.animals({
-      type: petFilter,
-      gender: petGender,
-      size: petSize,
-    });
+    const { animals } = await petFinder.animal
+      .search({
+        type: petFilter,
+        gender: petGender,
+        size: petSize,
+      })
+      .then((data) => data.data)
+      .catch((error) => error);
+
     fetchPets(animals);
     setUpdatePets(animals);
     filterPets(petFilter);
@@ -52,14 +57,18 @@ const SearchPets = ({
   };
 
   useEffect(async () => {
-    const { animals } = await pet.animals({
-      type: 'Horse',
-      gender: 'Male',
-      size: 'Small',
-    });
+    const { animals } = await petFinder.animal
+      .search({
+        type: 'Horse',
+        gender: 'Male',
+        size: 'Small',
+      })
+      .then((data) => data.data);
+
     fetchPets(animals);
     setUpdatePets(animals);
   }, []);
+
   return (
     <div className="main__wrapper" data-testid="search-pets-id">
       <div className="search__form__wrapper">
