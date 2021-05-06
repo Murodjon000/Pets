@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import pet from '@frontendmasters/pet';
 import { navigate } from '@reach/router';
+import petFinder from '../helpers/petFinderApi';
 
 const Details = ({ id }) => {
   const [loading, setLoading] = useState(true);
@@ -14,19 +14,20 @@ const Details = ({ id }) => {
   const [description, setDescription] = useState('');
 
   useEffect(async () => {
-    const pets = await pet.animal(id).then(({ animal }) => {
-      setUrl(animal.url);
-      setName(animal.name);
-      setAnimal(animal.type);
-      setLocation(
-        `${animal.contact.address.city},${animal.contact.address.state}`,
-      );
-      setBreed(animal.breeds.primary);
-      setMedia(animal.photos);
-      setDescription(animal.description);
-      setLoading(false);
-    });
-    return pets;
+    const { animal } = await petFinder.animal
+      .show(id)
+      .then((data) => data.data);
+
+    setUrl(animal.url);
+    setName(animal.name);
+    setAnimal(animal.type);
+    setLocation(
+      `${animal.contact.address.city},${animal.contact.address.state}`,
+    );
+    setBreed(animal.breeds.primary);
+    setMedia(animal.photos);
+    setDescription(animal.description);
+    setLoading(false);
   }, [id]);
 
   if (loading) {
@@ -58,7 +59,7 @@ const Details = ({ id }) => {
         <h2>{`Meet ${name}🎉`}</h2>
         <p>{`👀 ${description}`}</p>
         <button type="button" onClick={adopt}>
-          Adopt me
+          {`Adopt ${name}`}
         </button>
         <button type="button" onClick={home}>
           Back to home
