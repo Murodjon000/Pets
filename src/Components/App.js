@@ -1,5 +1,5 @@
 import React from 'react';
-import PetContainer from '../containers/PetContainer';
+import PetContainer from '../containers/SearchPetsContainer';
 
 const App = () => (
   <div>
